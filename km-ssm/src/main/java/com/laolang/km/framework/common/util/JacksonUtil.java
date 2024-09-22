@@ -68,7 +68,7 @@ public class JacksonUtil {
      * 开启 Feature
      */
     private static void enableFeatures(ObjectMapper om, List<SerializationFeature> serializationFeatures,
-            List<DeserializationFeature> deserializationFeatures) {
+                                       List<DeserializationFeature> deserializationFeatures) {
         if (CollUtil.isNotEmpty(serializationFeatures)) {
             for (SerializationFeature feature : serializationFeatures) {
                 om.enable(feature);

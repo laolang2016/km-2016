@@ -60,5 +60,5 @@
     </bean>
 
     <!-- 静态资源配置 -->
-    <mvc:resources location="/assets/**" mapping="/assets/"/>
+    <mvc:resources mapping="/favicon.ico" location="favicon.ico" />
 </beans>

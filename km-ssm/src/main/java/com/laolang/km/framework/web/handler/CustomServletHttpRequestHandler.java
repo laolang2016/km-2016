@@ -1,15 +1,15 @@
 package com.laolang.km.framework.web.handler;
 
+import cn.hutool.core.util.StrUtil;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
@@ -20,28 +20,35 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler;
 
-import cn.hutool.core.util.StrUtil;
-import lombok.extern.slf4j.Slf4j;
-
 @Slf4j
 public class CustomServletHttpRequestHandler extends DefaultServletHttpRequestHandler {
 
     @Autowired
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
-    /** Default Servlet name used by Tomcat, Jetty, JBoss, and GlassFish. */
+    /**
+     * Default Servlet name used by Tomcat, Jetty, JBoss, and GlassFish.
+     */
     private static final String COMMON_DEFAULT_SERVLET_NAME = "default";
 
-    /** Default Servlet name used by Google App Engine. */
+    /**
+     * Default Servlet name used by Google App Engine.
+     */
     private static final String GAE_DEFAULT_SERVLET_NAME = "_ah_default";
 
-    /** Default Servlet name used by Resin. */
+    /**
+     * Default Servlet name used by Resin.
+     */
     private static final String RESIN_DEFAULT_SERVLET_NAME = "resin-file";
 
-    /** Default Servlet name used by WebLogic. */
+    /**
+     * Default Servlet name used by WebLogic.
+     */
     private static final String WEBLOGIC_DEFAULT_SERVLET_NAME = "FileServlet";
 
-    /** Default Servlet name used by WebSphere. */
+    /**
+     * Default Servlet name used by WebSphere.
+     */
     private static final String WEBSPHERE_DEFAULT_SERVLET_NAME = "SimpleFileServlet";
 
     @Nullable
@@ -119,8 +126,12 @@ public class CustomServletHttpRequestHandler extends DefaultServletHttpRequestHa
                 throw new NoHandlerFoundException(request.getMethod(), requestURI, null);
             } else {
                 log.info("页面 404");
-                response.sendRedirect("/error/404");
-                return;
+                if (StrUtil.startWith(requestURI, "/admin")) {
+                    response.sendRedirect("/admin/error/404");
+                } else if(StrUtil.startWith(requestURI, "/portal")) {
+                    response.sendRedirect("/portal/error/404");
+                }
+                response.sendRedirect("/portal/error/404");
             }
         }
     }
