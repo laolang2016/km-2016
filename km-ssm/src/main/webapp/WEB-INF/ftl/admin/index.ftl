@@ -50,7 +50,7 @@
                     <div class="logo-element">H+</div>
                 </li>
                 <li>
-                    <a class="J_menuItem" href="${request.contextPath}/admin/dashboard"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
+                    <a class="J_menuItem" href="${request.contextPath}/dashboard"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
                 </li>
                 <li>
                     <a href="#">
@@ -362,7 +362,7 @@
             <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i></button>
             <nav class="page-tabs J_menuTabs">
                 <div class="page-tabs-content">
-                    <a href="javascript:;" class="active J_menuTab" data-id="${request.contextPath}/admin/dashboard">首页</a>
+                    <a href="javascript:;" class="active J_menuTab" data-id="${request.contextPath}/dashboard">首页</a>
                 </div>
             </nav>
             <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i></button>
@@ -377,7 +377,7 @@
             <a href="#" class="roll-nav roll-right tabReload"><i class="fa fa-refresh"></i> 刷新</a>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="${request.contextPath}/admin/dashboard" frameborder="0" data-id="${request.contextPath}/admin/dashboard" seamless></iframe>
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="${request.contextPath}/dashboard" frameborder="0" data-id="${request.contextPath}/dashboard" seamless></iframe>
         </div>
         <div class="footer">
             <div class="pull-right">&copy; 2014-2015 <a href="http://www.ruoyi.vip/" target="_blank">ruoyi</a></div>
