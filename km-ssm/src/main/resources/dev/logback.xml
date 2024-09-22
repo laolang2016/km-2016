@@ -7,7 +7,7 @@
     <property name="LOG_PATH" value="../logs/km-ssm" />
     <property name="LOG_FILE_NAME" value="app" />
     <property name="PATTERN_FORMAT"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %-40.40logger{39} - %msg%n" />
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %-40.40logger{39} [tid=%X{tid}] - %msg%n" />
 
     <!-- 输出到控制台 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">

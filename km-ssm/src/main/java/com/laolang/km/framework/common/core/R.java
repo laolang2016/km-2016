@@ -1,14 +1,14 @@
 package com.laolang.km.framework.common.core;
 
-import java.time.LocalDateTime;
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.laolang.km.framework.common.consts.CommonStatusCode;
+import com.laolang.km.framework.common.consts.GloablConsts;
 import com.laolang.km.framework.common.exception.BusinessException;
-
+import java.time.LocalDateTime;
+import java.util.Map;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.slf4j.MDC;
 
 @Accessors(chain = true)
 @Data
@@ -44,6 +44,11 @@ public class R<T> {
      */
     private LocalDateTime time;
 
+    /**
+     * traceId
+     */
+    private String tid;
+
     public static <T> R<T> build(String code, boolean success, String msg, T body) {
         R<T> ajax = new R<>();
         ajax.setCode(code);
@@ -52,6 +57,7 @@ public class R<T> {
         ajax.setBody(body);
         ajax.setExtra(null);
         ajax.time = LocalDateTime.now();
+        ajax.setTid(MDC.get(GloablConsts.TID_NAME));
 
         return ajax;
     }

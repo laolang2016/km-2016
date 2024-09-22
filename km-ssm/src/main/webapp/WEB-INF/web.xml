@@ -84,6 +84,20 @@
         <url-pattern>*.ico</url-pattern>
     </servlet-mapping>
 
+    <!-- 全局拦截器 -->
+    <filter>
+        <filter-name>globalFilter</filter-name>
+        <filter-class>com.laolang.km.framework.web.filter.GlobalFilter</filter-class>
+        <init-param>
+            <param-name>allowedMethods</param-name>
+            <param-value>GET,POST</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>globalFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!--默认拦截器：*.html交给默认的servlet请求处理，而不是spring处理，*.jsp默认的servlet会处理，无需要添加   -->
     <servlet-mapping>
         <servlet-name>default</servlet-name>

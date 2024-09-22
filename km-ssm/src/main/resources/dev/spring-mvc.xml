@@ -20,6 +20,13 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.laolang.km.framework.web.interceptor.GlobalInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- Jackson ObjectMapper 配置 -->
     <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
         <property name="modulesToInstall">
@@ -50,15 +57,15 @@
 
     <!-- 自定义静态资源处理 -->
     <bean id="customServletHttpRequestHandler"
-          class="com.laolang.km.framework.web.handler.CustomServletHttpRequestHandler" />
+          class="com.laolang.km.framework.web.handler.CustomServletHttpRequestHandler"/>
 
     <!-- 自定义的 HandlerMapping -->
     <bean
             class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="defaultHandler"
-                  ref="customServletHttpRequestHandler" />
+                  ref="customServletHttpRequestHandler"/>
     </bean>
 
     <!-- 静态资源配置 -->
-    <mvc:resources mapping="/favicon.ico" location="favicon.ico" />
+    <mvc:resources mapping="/favicon.ico" location="favicon.ico"/>
 </beans>
